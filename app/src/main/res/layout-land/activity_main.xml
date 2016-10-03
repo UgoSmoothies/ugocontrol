@@ -98,9 +98,10 @@
             android:layout_margin="10dp"
             android:layout_height="120dp"
             />
-        <Button
+        <ToggleButton
             android:id="@+id/moveupbutton"
-            android:text="MOVE UP"
+            android:textOn="MOVE UP"
+            android:textOff="MOVE UP"
             android:textSize="30dp"
             android:background="@drawable/buttonshape"
             android:layout_width="350dp"
@@ -108,9 +109,10 @@
             android:layout_height="120dp"
             />
 
-        <Button
+        <ToggleButton
             android:id="@+id/movedownbutton"
-            android:text="MOVE DOWN"
+            android:textOn="MOVE DOWN"
+            android:textOff="MOVE DOWN"
             android:background="@drawable/buttonshape"
             android:layout_margin="10dp"
             android:textSize="30dp"
