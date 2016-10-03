@@ -1,6 +1,7 @@
 package com.ugosmoothie.ugocontrolapp;
 
 import android.graphics.drawable.ShapeDrawable;
+import android.support.annotation.DrawableRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,12 +25,15 @@ public class MainActivity extends AppCompatActivity {
         final Button clean = (Button) findViewById((R.id.cleanbutton));
         final Button initialize = (Button) findViewById((R.id.initializebutton));
         final Button stop = (Button) findViewById((R.id.stopbutton));
-        final Button moveUp = (Button) findViewById((R.id.moveupbutton));
-        final Button movedown = (Button) findViewById((R.id.movedownbutton));
+
+        final ToggleButton moveup = (ToggleButton) findViewById((R.id.moveupbutton));
+        final ToggleButton movedown = (ToggleButton) findViewById((R.id.movedownbutton));
         final ToggleButton jogtop = (ToggleButton) findViewById((R.id.jogtopbutton));
         final ToggleButton jogbottom = (ToggleButton) findViewById((R.id.jogbottombutton));
-        final Button connect = (Button) findViewById((R.id.connectbutton));
         final ToggleButton disablekeypad = (ToggleButton) findViewById((R.id.disablekeypadbutton));
+
+
+        final Button connect = (Button) findViewById((R.id.connectbutton));
         indicator = (ImageView) findViewById((R.id.redbutton));
         indicator.setImageResource(R.drawable.greenindicator);
 
@@ -63,19 +67,6 @@ public class MainActivity extends AppCompatActivity {
                 clickclean();
             }
         });
-        moveUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickmoveup();
-            }
-        });
-        movedown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickmovedown();
-            }
-        });
-
         connect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,12 +74,40 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        moveup.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    clickmoveup();
+                    moveup.setBackgroundDrawable(getResources().getDrawable(R.drawable.shadebuttonshape));
+                } else {
+                    clickmoveup();
+                    moveup.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttonshape));
+                }
+            }
+        });
+
+        movedown.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    clickmovedown();
+                    movedown.setBackgroundDrawable(getResources().getDrawable(R.drawable.shadebuttonshape));
+                } else {
+                    clickmovedown();
+                    movedown.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttonshape));
+                }
+            }
+        });
+
+
         disablekeypad.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     clickdisablekeypad();
+                    disablekeypad.setBackgroundDrawable(getResources().getDrawable(R.drawable.shadebuttonshape));
                 } else {
                     clickdisablekeypad();
+                    disablekeypad.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttonshape));
                 }
             }
         });
@@ -99,8 +118,10 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     clickjogtop();
+                    jogtop.setBackgroundDrawable(getResources().getDrawable(R.drawable.shadebuttonshape));
                 } else {
                     clickjogtop();
+                    jogtop.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttonshape));
                 }
             }
         });
@@ -109,8 +130,10 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     clickjogbottom();
+                    jogbottom.setBackgroundDrawable(getResources().getDrawable(R.drawable.shadebuttonshape));
                 } else {
                     clickjogbottom();
+                    jogbottom.setBackgroundDrawable(getResources().getDrawable(R.drawable.buttonshape));
                 }
             }
         });
